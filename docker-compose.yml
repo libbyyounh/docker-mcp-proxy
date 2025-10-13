@@ -1,0 +1,9 @@
+services:
+  mcp-proxy:
+    build: .
+    # restart: unless-stopped
+    volumes:
+      - ./config.json:/app/config.json
+    ports:
+      - 8096:8096
+    command: "--pass-environment --port=8096 --host 0.0.0.0 --named-server-config /app/config.json uvx mcp-server-fetch"
